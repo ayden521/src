@@ -59,6 +59,7 @@ connection = mysql.connector.connect(
 )
 #Creating a cursor object using the cursor() method
 cursor = connection.cursor()
+# probably should add a try, except for createing the table. That way we're not creating a table each time we connect.
 
 #Creating table as per requirement
 sql ='''CREATE TABLE `activities` (

@@ -1,3 +1,4 @@
+import csv
 import mysql
 import mysql.connector
 db = mysql.connector.connect(
@@ -5,23 +6,19 @@ db = mysql.connector.connect(
 )
 
 cur = db.cursor()
-cur.execute("SELECT MAX(price) AS Max Price FROM activities;") 
-max_result = cur.fetchall() 
-#for i in max_result:
-#    maximum = float(i[0])
-#    print(maximum)
-
-cur2 = db.cursor()
-cur2.execute("SELECT AVG(price) AS Average Price FROM activities;")
-ave_result = cur2.fetchall
-
-cur3 = db.cursor()
-cur3.execute("SELECT SUM(participants) as Total Participants FROM activities;" )
-sum_result = cur3.fetchall
-
-cur4 = db.cursor()
-cur4.execute("SELECT type as Type from FROM activities;")
-type_result = cur4.fetchall
+sql = "SELCT type, MAX(price), AVG(price), SUM(participants) FROM activities GROUP BY type;"
+cur.execute(sql) 
+results = cur.fetchall() 
 
 # Close database connection
 db.close()
+
+# Create the csv file
+with open('data.csv', 'w', newline='') as f_handle:
+    writer = csv.writer(f_handle)
+    # Add the header/column names
+    header = ['Type', 'Max Price', 'Average Price', 'Total Participants']
+    writer.writerow(header)
+    # Iterate over `results`  and  write to the csv file
+    for row in results:
+        writer.writerow(row)
