@@ -14,7 +14,6 @@ for key in response_info:
     print (inserts)
 
 
-
 # Serializing json
 #json_object = json.dumps(response_info, indent=7)
 #print (json_object)
@@ -53,15 +52,22 @@ for key in response_info:
 # now how to get these insert statemetns inserted into mysql
 import mysql.connector
 
-#establishing the connection (this is a fake connection)
-connection = mysql.connector.connect(
-   user='root', password='password', host='localhost', database='mydb'
-)
+#establishing the connection (this is a fake connection) 
+try:
+    connection = mysql.connector.connect(
+    user='root', password='password', host='localhost', database='mydb'
+    )
+except Exception as e:
+    print(e)
 #Creating a cursor object using the cursor() method
 cursor = connection.cursor()
+
+# Create Database
+sql_db = "CREATE DATABASE trader_interactive;"
+cursor.execute(sql_db)
 # probably should add a try, except for createing the table. That way we're not creating a table each time we connect.
 
-#Creating table as per requirement
+#Creating table as per requirement (should this be done before hand and we just insert the info from the api call)
 sql ='''CREATE TABLE `activities` (
 `activity` varchar(100) DEFAULT NULL,
 `type` varchar(100) DEFAULT NULL,
