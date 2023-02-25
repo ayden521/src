@@ -1,17 +1,21 @@
 import csv
 import mysql
 import mysql.connector
-db = mysql.connector.connect(
-   user='root', password='password', host='localhost', database='mydb'
-)
+try:
+    connection = mysql.connector.connect(
+    user='root', password='password', host='localhost', database='mydb'
+    )
+except Exception as e:
+    print(e)
 
-cur = db.cursor()
+
+cur = connection.cursor()
 sql = "SELCT type, MAX(price), AVG(price), SUM(participants) FROM activities GROUP BY type;"
 cur.execute(sql) 
 results = cur.fetchall() 
 
 # Close database connection
-db.close()
+connection.close()
 
 # Create the csv file
 with open('data.csv', 'w', newline='') as f_handle:
