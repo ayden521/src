@@ -7,9 +7,9 @@ db_services.py pulls the data from the database that we later export into a csv 
 
 report_services.py writes the data pulled from db_services.py into a csv called data.csv
 
-report_acticity.py calls the function get_activity_summary from db_service.py and passes that info into the function write_activities_to_file from report_service.py.
+report_acticity.py gets info from db and writes to the csv
 
-fetch_activity.py calls the function get_activity_from_api from activity_service.py and passed that info into the function insert_activity from db_service.py
+fetch_activity.py fetch data from api and inserts into db
 
 # setting up cronjob
 crontab -e
