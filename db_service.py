@@ -56,10 +56,3 @@ def get_activity_summary():
     # Close database connection
     connection.close()
     return results
-
-
-# def db_connection():
-#     connection = mysql.connector.connect(
-#     user='activity_app', password='Activity21', host='db4free.net', database='activities'
-#     )
-#     return connection

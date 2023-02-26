@@ -3,7 +3,7 @@ import csv
 def write_activities_to_file(activity_summary):
 
     # Create the csv file
-    with open('data.csv', 'w', newline='') as f_handle:
+    with open('/Users/ayden/my_code_projects/trader_interactive/data.csv', 'w', newline='') as f_handle:
         writer = csv.writer(f_handle)
         # Add the header/column names
         header = ['Type', 'Max Price', 'Average Price', 'Total Participants']
