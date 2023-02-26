@@ -13,7 +13,7 @@ fetch_activity.py calls the function get_activity_from_api from activity_service
 
 # setting up cronjob
 crontab -e
-* * * * * /usr/bin/python3 /Users/ayden/my_code_projects/trader_interactive/fetch_activity.py 
-* * * * * /usr/bin/python3 /Users/ayden/my_code_projects/trader_interactive/report_activity.py 
+`* * * * * /usr/bin/python3 /Users/ayden/my_code_projects/trader_interactive/fetch_activity.py`
+`* * * * * /usr/bin/python3 /Users/ayden/my_code_projects/trader_interactive/report_activity.py`
 
 
