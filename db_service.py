@@ -30,7 +30,7 @@ def insert_activity(activity):
 
     # establishing the connection 
     connection = mysql.connector.connect(
-    user='activity_app', password='Activity21', host='db4free.net', database='activities'
+    user='activity_app', password='XXXXX', host='db4free.net', database='activities'
     )
         
     #Creating a cursor object using the cursor() method
@@ -45,7 +45,7 @@ def insert_activity(activity):
 
 def get_activity_summary():
     connection = mysql.connector.connect(
-    user='activity_app', password='Activity21', host='db4free.net', database='activities'
+    user='activity_app', password='XXXXX', host='db4free.net', database='activities'
     )
 
     cursor = connection.cursor()
