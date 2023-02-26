@@ -48,12 +48,18 @@ def get_activity_summary():
     user='activity_app', password='Activity21', host='db4free.net', database='activities'
     )
 
-    cur = connection.cursor()
+    cursor = connection.cursor()
     sql = "Select type, MAX(price), AVG(price), SUM(participants) FROM activities GROUP BY type;"
-    cur.execute(sql) 
-    results = cur.fetchall() 
+    cursor.execute(sql) 
+    results = cursor.fetchall() 
 
     # Close database connection
     connection.close()
     return results
 
+
+# def db_connection():
+#     connection = mysql.connector.connect(
+#     user='activity_app', password='Activity21', host='db4free.net', database='activities'
+#     )
+#     return connection
